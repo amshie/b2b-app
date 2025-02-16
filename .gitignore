@@ -1,0 +1,37 @@
+# Python (Django)
+venv/                       # Virtuelle Umgebung
+__pycache__/                # Python-Cache-Dateien
+*.pyc                       # Kompilierte Python-Dateien
+*.pyo                       # Optimierte Python-Dateien
+*.db                        # SQLite-Datenbanken
+.env                        # Umgebungsvariablen (z.B. Datenbankpasswörter)
+*.sqlite3                   # SQLite-Datenbankdateien
+db.sqlite3                  # Standard-Datenbank von Django
+
+# Django Logs
+*.log                       # Log-Dateien
+
+# PostgreSQL
+pg_dump.sql                 # SQL-Dumps
+*.pgpass                    # PostgreSQL-Passwörter
+
+# Node.js (React)
+node_modules/               # Abhängigkeiten von Node.js
+package-lock.json           # Lock-Datei (kann bei Bedarf behalten werden)
+npm-debug.log               # Debug-Log von npm
+dist/                       # Verzeichnis für gebaute Dateien
+build/                      # Produktionsbuild
+
+# IDEs und Editoren
+.vscode/                    # VSCode-Einstellungen
+.idea/                      # IntelliJ IDEA-Einstellungen
+*.suo                       # Visual Studio-Dateien
+*.ntvs*                     # Node.js-Tools für Visual Studio
+*.swp                       # Swap-Dateien (z.B. Vim)
+
+# Betriebssystem-spezifische Dateien
+.DS_Store                   # macOS-Dateien
+Thumbs.db                   # Windows-Vorschaubilder
+
+# Git
+.gitignore                  # Die .gitignore-Datei selbst
