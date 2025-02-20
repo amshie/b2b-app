@@ -1,0 +1,76 @@
+<h1>Medikamente bestellen</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    <h2>Persönliche Informationen</h2>
+    <div class="form-group">
+        <label for="name">Vollständiger Name</label>
+        <input required class="form-control" type="text" name="name" placeholder="Ihr Name">
+    </div>
+
+    <div class="form-group">
+        <label for="email">E-Mail-Adresse</label>
+        <input required class="form-control" type="email" name="email" placeholder="example@domain.com">
+    </div>
+
+    <div class="form-group">
+        <label for="street">Straße & Hausnummer</label>
+        <input required class="form-control" type="text" name="street" placeholder="Musterstraße 1">
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-sm-12">
+            <label for="city">Stadt</label>
+            <input required class="form-control" type="text" name="city" placeholder="Berlin">
+        </div>
+
+        <div class="col-md-4 col-sm-12">
+            <label for="state">Bundesland</label>
+            <input required class="form-control" type="text" name="state" placeholder="Berlin">
+        </div>
+
+        <div class="col-md-4 col-sm-12">
+            <label for="zip">Postleitzahl</label>
+            <input required class="form-control" type="text" name="zip" placeholder="10115">
+        </div>
+    </div>
+
+    <h2>Medikamente auswählen</h2>
+    {% for category, medications in categories.items %}
+        <h3>{{ category }}</h3>
+        {% for medication in medications %}
+            <div class="medication-card">
+                <img src="{{ medication.image.url }}" alt="{{ medication.name }}" width="100">
+                <p><strong>{{ medication.name }}</strong></p>
+                <p>{{ medication.description }}</p>
+                <p><strong>Preis:</strong> {{ medication.price }} €</p>
+                <input type="checkbox" name="items[]" value="{{ medication.id }}">
+                <label for="items[]">Zur Bestellung hinzufügen</label>
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#submitModal">
+        Bestellung aufgeben
+    </button>
+
+    <!-- Bootstrap Modal für Bestellbestätigung -->
+    <div class="modal fade" id="submitModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Bestellung bestätigen</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Möchten Sie Ihre Bestellung wirklich absenden?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Zurück</button>
+                    <button type="submit" class="btn btn-dark">Bestellung absenden</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

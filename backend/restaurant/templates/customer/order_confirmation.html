@@ -1,0 +1,8 @@
+<h2>Bestellung aufgegeben!</h2>
+<ul>
+    {% for item in items %}
+        <li>{{ item.name }} - {{ item.price }}</li>
+    {% endfor %}
+</ul>
+<p>Gesamtpreis: {{ price }}</p>
+<a href="/">Zurück zur Startseite</a>
